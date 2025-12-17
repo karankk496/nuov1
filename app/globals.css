@@ -2920,6 +2920,13 @@ section {
   font-size: 0.95rem;
 }
 
+#budget option{
+  color: white;
+  background-color: #121621;
+ 
+}
+
+
 /* Footer */
 footer {
   background: var(--navy);
