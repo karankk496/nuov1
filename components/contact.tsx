@@ -99,7 +99,7 @@ export default function Contact() {
               <div className="contact-item-icon">📍</div>
               <div>
                 <h4>Visit Us</h4>
-                <p>VO-218|WeWork Salarpuria Magnificia| Tin Factory|#78 Old Madras Road| Mahadevapura| Next to KR Puram| Doorvani Nagar |Bengaluru-560016| KA |India|</p>
+                <p>VO-218 | WeWork Salarpuria Magnificia | Tin Factory | #78 Old Madras Road | Mahadevapura | Next to KR Puram | Doorvani Nagar | Bengaluru-560016 | KA | India </p>
               </div>
             </div>
           </div>
