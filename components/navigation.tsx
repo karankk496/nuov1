@@ -5,17 +5,18 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 
 interface NavLink {
-  href: string
+  path: string
+  sectionId: string
   label: string
 }
 
 const navLinks: ReadonlyArray<NavLink> = [
-  { href: "#services", label: "Services" },
-  { href: "#tech", label: "Technologies" },
-  { href: "#projects", label: "Projects" },
-  { href: "#case-studies", label: "Case Studies" },
-  { href: "#about", label: "About" },
-  { href: "#contact", label: "Contact" },
+  { path: "/services", sectionId: "services", label: "Services" },
+  { path: "/technologies", sectionId: "tech", label: "Technologies" },
+  { path: "/projects", sectionId: "projects", label: "Projects" },
+  { path: "/case-studies", sectionId: "case-studies", label: "Case Studies" },
+  { path: "/about", sectionId: "about", label: "About" },
+  { path: "/contact", sectionId: "contact", label: "Contact" },
 ]
 
 const Navigation: React.FC = () => {
@@ -39,6 +40,20 @@ const Navigation: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  // Handle initial load - scroll to section if URL matches a nav path
+  useEffect(() => {
+    const currentPath = window.location.pathname
+    const matchingLink = navLinks.find((link) => link.path === currentPath)
+    if (matchingLink) {
+      const element = document.getElementById(matchingLink.sectionId)
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" })
+        }, 100)
+      }
+    }
+  }, [])
+
   const toggleMobileNav = () => {
     setIsMobileNavOpen((open) => !open)
   }
@@ -47,17 +62,32 @@ const Navigation: React.FC = () => {
     setIsMobileNavOpen(false)
   }
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, link: NavLink) => {
+    e.preventDefault()
+    const element = document.getElementById(link.sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+      window.history.pushState(null, "", link.path)
+    }
+  }
+
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    window.scrollTo({ top: 0, behavior: "smooth" })
+    window.history.pushState(null, "", "/")
+  }
+
   return (
     <>
       <nav>
-        <Link href="#" className="logo">
+        <a href="/" className="logo" onClick={handleLogoClick}>
           NUO<span>.</span>
-        </Link>
+        </a>
         <div className="nav-center">
           <ul className="nav-links">
             {navLinks.map((link) => (
-              <li key={link.href}>
-                <a href={link.href}>{link.label}</a>
+              <li key={link.path}>
+                <a href={link.path} onClick={(e) => handleNavClick(e, link)}>{link.label}</a>
               </li>
             ))}
           </ul>
@@ -66,7 +96,7 @@ const Navigation: React.FC = () => {
           <a href="/login" className="nav-auth">
             Log in / Sign up
           </a>
-          <a href="#contact" className="nav-cta">
+          <a href="/contact" className="nav-cta" onClick={(e) => handleNavClick(e, navLinks[5])}>
             Get Started
           </a>
           <button
@@ -99,8 +129,8 @@ const Navigation: React.FC = () => {
         </div>
         <ul className="mobile-nav-links">
           {navLinks.map((link) => (
-            <li key={link.href}>
-              <a href={link.href} onClick={closeMobileNav}>
+            <li key={link.path}>
+              <a href={link.path} onClick={(e) => { handleNavClick(e, link); closeMobileNav(); }}>
                 {link.label}
               </a>
             </li>

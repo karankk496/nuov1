@@ -118,10 +118,10 @@ export default function Hero() {
           cross-industry excellence.
         </p>
         <div className="hero-ctas">
-          <a href="#contact" className="btn-primary">
+          <a href="/contact" className="btn-primary" onClick={(e) => { e.preventDefault(); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }); window.history.pushState(null, "", "/contact"); }}>
             Schedule a Discovery Call
           </a>
-          <a href="#projects" className="btn-secondary">
+          <a href="/projects" className="btn-secondary" onClick={(e) => { e.preventDefault(); document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" }); window.history.pushState(null, "", "/projects"); }}>
             View Our Projects
           </a>
         </div>
