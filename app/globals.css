@@ -3135,7 +3135,7 @@ footer {
   border-radius: 20px;
   padding: 1.75rem 2rem;
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
   position: relative;
   z-index: 1;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5),
@@ -3252,7 +3252,7 @@ footer {
 }
 
 .login-form .form-group input::placeholder {
-  color: var(--grey-500);
+  color: var(--grey-600);
 }
 
 .login-form .form-group input:hover {
@@ -3284,7 +3284,7 @@ footer {
   cursor: pointer;
   font-size: 0.9rem;
   transition: all 0.3s ease;
-  margin-top: 0.2rem;
+  margin-top: 0.75rem;
   position: relative;
   overflow: hidden;
   text-transform: uppercase;
@@ -3418,6 +3418,84 @@ footer {
   color: var(--electric-blue);
 }
 
+/* Register Page Specific Styles */
+.register-card {
+  max-width: 500px;
+}
+
+.register-card .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  height: 60px;
+}
+
+/* Password Strength Indicator */
+.password-strength {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+
+.strength-bars {
+  display: flex;
+  gap: 3px;
+  flex: 1;
+}
+
+.strength-bar {
+  height: 4px;
+  flex: 1;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.strength-bar.active {
+  background: var(--electric-blue);
+}
+
+.strength-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-width: 45px;
+  text-align: right;
+}
+
+/* Field Error */
+.field-error {
+  color: #ff6b6b;
+  font-size: 0.7rem;
+  margin-top: 0.3rem;
+  margin-bottom: 0;
+}
+
+/* Input States */
+.login-form .form-group input.input-error {
+  border-color: #ff6b6b;
+}
+
+.login-form .form-group input.input-success {
+  border-color: #7bed9f;
+}
+
+.login-form .form-group {
+  position: relative;
+}
+
+.input-check {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(25%);
+  color: #7bed9f;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
 /* Mobile responsive */
 @media (max-width: 480px) {
   .login-container {
@@ -3431,5 +3509,10 @@ footer {
   
   .login-title {
     font-size: 1.25rem;
+  }
+
+  .register-card .form-row {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
   }
 }
