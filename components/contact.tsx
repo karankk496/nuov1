@@ -64,7 +64,7 @@ export default function Contact() {
             <textarea
               id="project"
               name="project"
-              rows={5}
+              rows={9}
               required
               placeholder="Tell us about your project, technical challenges, and goals..."
               suppressHydrationWarning
@@ -85,21 +85,21 @@ export default function Contact() {
               <div className="contact-item-icon">📧</div>
               <div>
                 <h4>Email Us</h4>
-                <p>contact@nuotech.com</p>
+                <p>contactus@NuoFinTech.com</p>
               </div>
             </div>
             <div className="contact-item">
               <div className="contact-item-icon">📞</div>
               <div>
                 <h4>Call Us</h4>
-                <p>+1 (555) 123-4567</p>
+                <p>+91 6360395817</p>
               </div>
             </div>
             <div className="contact-item">
               <div className="contact-item-icon">📍</div>
               <div>
                 <h4>Visit Us</h4>
-                <p>123 Tech Street, San Francisco, CA 94105</p>
+                <p>VO-218|WeWork Salarpuria Magnificia| Tin Factory|#78 Old Madras Road| Mahadevapura| Next to KR Puram| Doorvani Nagar |Bengaluru-560016| KA |India|</p>
               </div>
             </div>
           </div>
